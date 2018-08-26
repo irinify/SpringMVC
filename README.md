@@ -1,2 +1,4 @@
 # SpringMVC
 springmvc&amp;mybatis
+
+大三暑期在软通实训，了解了一下SpringMVC的一些知识，学习了SpringMVC配合mybatis的几个配置文件的设置。项目是先做的Servlet然后转过来的，业务逻辑比较熟练了，也便于我理解spring的几个包的分工

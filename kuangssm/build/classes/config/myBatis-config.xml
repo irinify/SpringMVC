@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 通过别名简化对类的使用 -->
+<typeAliases>
+<!-- <typeAlias type="com.entity.Dept" alias="Dept" />-->
+ 	<!-- 自动 给当前包下边的实体类加个别名 --><package name="com.entity"/>
+</typeAliases>
+	<!-- <mappers>
+		<mapper resource="com/mapper/UserinfoMapper.xml" />
+		<mapper resource="com/mapper/BlacklistMapper.xml" />
+		<mapper resource="com/mapper/GoodsMapper.xml" />
+		<mapper resource="com/mapper/RatingMapper.xml" />
+		<mapper resource="com/mapper/SupplierMapper.xml" />
+		<mapper resource="com/mapper/SupratingMapper.xml" />
+	</mappers> -->
+	<!-- 如果有特别需要加载的mapper文件可以在这里标注 -->
+</configuration>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.GoodsMapper">
+  <resultMap id="GoodsMap" type="com.entity.Goods">
+    <id column="goodsID" jdbcType="INTEGER" property="goodsid" />
+    <result column="supplierName" jdbcType="VARCHAR" property="suppliername" />
+    <result column="jan" jdbcType="REAL" property="jan" />
+    <result column="feb" jdbcType="REAL" property="feb" />
+    <result column="mar" jdbcType="REAL" property="mar" />
+    <result column="apr" jdbcType="REAL" property="apr" />
+    <result column="may" jdbcType="REAL" property="may" />
+    <result column="jun" jdbcType="REAL" property="jun" />
+    <result column="july" jdbcType="REAL" property="july" />
+    <result column="aug" jdbcType="REAL" property="aug" />
+    <result column="sep" jdbcType="REAL" property="sep" />
+    <result column="oct" jdbcType="REAL" property="oct" />
+    <result column="nov" jdbcType="REAL" property="nov" />
+    <result column="dec" jdbcType="REAL" property="dec" />
+  </resultMap>
+  <sql id="Goods_Column_List">
+    goodsID, supplierName, jan, feb, mar, apr, may, jun, july, aug, sep, oct, nov, dec
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Goods_Column_List" />
+    from goods
+    where goodsID = #{goodsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from goods
+    where goodsID = #{goodsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Goods">
+    insert into goods (goodsID, supplierName, jan, 
+      feb, mar, apr, may, 
+      jun, july, aug, sep, 
+      oct, nov, dec)
+    values (#{goodsid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{jan,jdbcType=REAL}, 
+      #{feb,jdbcType=REAL}, #{mar,jdbcType=REAL}, #{apr,jdbcType=REAL}, #{may,jdbcType=REAL}, 
+      #{jun,jdbcType=REAL}, #{july,jdbcType=REAL}, #{aug,jdbcType=REAL}, #{sep,jdbcType=REAL}, 
+      #{oct,jdbcType=REAL}, #{nov,jdbcType=REAL}, #{dec,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Goods">
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsid != null">
+        goodsID,
+      </if>
+      <if test="suppliername != null">
+        supplierName,
+      </if>
+      <if test="jan != null">
+        jan,
+      </if>
+      <if test="feb != null">
+        feb,
+      </if>
+      <if test="mar != null">
+        mar,
+      </if>
+      <if test="apr != null">
+        apr,
+      </if>
+      <if test="may != null">
+        may,
+      </if>
+      <if test="jun != null">
+        jun,
+      </if>
+      <if test="july != null">
+        july,
+      </if>
+      <if test="aug != null">
+        aug,
+      </if>
+      <if test="sep != null">
+        sep,
+      </if>
+      <if test="oct != null">
+        oct,
+      </if>
+      <if test="nov != null">
+        nov,
+      </if>
+      <if test="dec != null">
+        dec,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsid != null">
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="jan != null">
+        #{jan,jdbcType=REAL},
+      </if>
+      <if test="feb != null">
+        #{feb,jdbcType=REAL},
+      </if>
+      <if test="mar != null">
+        #{mar,jdbcType=REAL},
+      </if>
+      <if test="apr != null">
+        #{apr,jdbcType=REAL},
+      </if>
+      <if test="may != null">
+        #{may,jdbcType=REAL},
+      </if>
+      <if test="jun != null">
+        #{jun,jdbcType=REAL},
+      </if>
+      <if test="july != null">
+        #{july,jdbcType=REAL},
+      </if>
+      <if test="aug != null">
+        #{aug,jdbcType=REAL},
+      </if>
+      <if test="sep != null">
+        #{sep,jdbcType=REAL},
+      </if>
+      <if test="oct != null">
+        #{oct,jdbcType=REAL},
+      </if>
+      <if test="nov != null">
+        #{nov,jdbcType=REAL},
+      </if>
+      <if test="dec != null">
+        #{dec,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Goods">
+    update goods
+    <set>
+      <if test="suppliername != null">
+        supplierName = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="jan != null">
+        jan = #{jan,jdbcType=REAL},
+      </if>
+      <if test="feb != null">
+        feb = #{feb,jdbcType=REAL},
+      </if>
+      <if test="mar != null">
+        mar = #{mar,jdbcType=REAL},
+      </if>
+      <if test="apr != null">
+        apr = #{apr,jdbcType=REAL},
+      </if>
+      <if test="may != null">
+        may = #{may,jdbcType=REAL},
+      </if>
+      <if test="jun != null">
+        jun = #{jun,jdbcType=REAL},
+      </if>
+      <if test="july != null">
+        july = #{july,jdbcType=REAL},
+      </if>
+      <if test="aug != null">
+        aug = #{aug,jdbcType=REAL},
+      </if>
+      <if test="sep != null">
+        sep = #{sep,jdbcType=REAL},
+      </if>
+      <if test="oct != null">
+        oct = #{oct,jdbcType=REAL},
+      </if>
+      <if test="nov != null">
+        nov = #{nov,jdbcType=REAL},
+      </if>
+      <if test="dec != null">
+        dec = #{dec,jdbcType=REAL},
+      </if>
+    </set>
+    where goodsID = #{goodsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Goods">
+    update goods
+    set supplierName = #{suppliername,jdbcType=VARCHAR},
+      jan = #{jan,jdbcType=REAL},
+      feb = #{feb,jdbcType=REAL},
+      mar = #{mar,jdbcType=REAL},
+      apr = #{apr,jdbcType=REAL},
+      may = #{may,jdbcType=REAL},
+      jun = #{jun,jdbcType=REAL},
+      july = #{july,jdbcType=REAL},
+      aug = #{aug,jdbcType=REAL},
+      sep = #{sep,jdbcType=REAL},
+      oct = #{oct,jdbcType=REAL},
+      nov = #{nov,jdbcType=REAL},
+      dec = #{dec,jdbcType=REAL}
+    where goodsID = #{goodsid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BlacklistMapper">
+  <resultMap id="BlacklistMap" type="com.entity.Blacklist">
+    <id column="blacklistID" jdbcType="INTEGER" property="blacklistid" />
+    <result column="supplierName" jdbcType="VARCHAR" property="suppliername" />
+    <result column="applyUnit" jdbcType="VARCHAR" property="applyunit" />
+    <result column="applyMan" jdbcType="VARCHAR" property="applyman" />
+    <result column="applyItem" jdbcType="VARCHAR" property="applyitem" />
+    <result column="applyRemark" jdbcType="VARCHAR" property="applyremark" />
+    <result column="applyDate" jdbcType="TIMESTAMP" property="applydate" />
+    <result column="checkUnit" jdbcType="VARCHAR" property="checkunit" />
+    <result column="checkMan" jdbcType="VARCHAR" property="checkman" />
+    <result column="checkRemark" jdbcType="VARCHAR" property="checkremark" />
+    <result column="checkDate" jdbcType="TIMESTAMP" property="checkdate" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+    <result column="suggestion" jdbcType="VARCHAR" property="suggestion" />
+  </resultMap>
+  <sql id="Blacklist_Column_List">
+    blacklistID, supplierName, applyUnit, applyMan, applyItem, applyRemark, applyDate, 
+    checkUnit, checkMan, checkRemark, checkDate, Status, suggestion
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Blacklist_Column_List" />
+    from blacklist
+    where blacklistID = #{blacklistid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blacklist
+    where blacklistID = #{blacklistid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Blacklist">
+    insert into blacklist (blacklistID, supplierName, applyUnit, 
+      applyMan, applyItem, applyRemark, 
+      applyDate, checkUnit, checkMan, 
+      checkRemark, checkDate, Status, 
+      suggestion)
+    values (#{blacklistid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{applyunit,jdbcType=VARCHAR}, 
+      #{applyman,jdbcType=VARCHAR}, #{applyitem,jdbcType=VARCHAR}, #{applyremark,jdbcType=VARCHAR}, 
+      #{applydate,jdbcType=TIMESTAMP}, #{checkunit,jdbcType=VARCHAR}, #{checkman,jdbcType=VARCHAR}, 
+      #{checkremark,jdbcType=VARCHAR}, #{checkdate,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{suggestion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Blacklist">
+    insert into blacklist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="blacklistid != null">
+        blacklistID,
+      </if>
+      <if test="suppliername != null">
+        supplierName,
+      </if>
+      <if test="applyunit != null">
+        applyUnit,
+      </if>
+      <if test="applyman != null">
+        applyMan,
+      </if>
+      <if test="applyitem != null">
+        applyItem,
+      </if>
+      <if test="applyremark != null">
+        applyRemark,
+      </if>
+      <if test="applydate != null">
+        applyDate,
+      </if>
+      <if test="checkunit != null">
+        checkUnit,
+      </if>
+      <if test="checkman != null">
+        checkMan,
+      </if>
+      <if test="checkremark != null">
+        checkRemark,
+      </if>
+      <if test="checkdate != null">
+        checkDate,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="suggestion != null">
+        suggestion,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="blacklistid != null">
+        #{blacklistid,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="applyunit != null">
+        #{applyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="applyman != null">
+        #{applyman,jdbcType=VARCHAR},
+      </if>
+      <if test="applyitem != null">
+        #{applyitem,jdbcType=VARCHAR},
+      </if>
+      <if test="applyremark != null">
+        #{applyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkunit != null">
+        #{checkunit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkman != null">
+        #{checkman,jdbcType=VARCHAR},
+      </if>
+      <if test="checkremark != null">
+        #{checkremark,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        #{checkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="suggestion != null">
+        #{suggestion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Blacklist">
+    update blacklist
+    <set>
+      <if test="suppliername != null">
+        supplierName = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="applyunit != null">
+        applyUnit = #{applyunit,jdbcType=VARCHAR},
+      </if>
+      <if test="applyman != null">
+        applyMan = #{applyman,jdbcType=VARCHAR},
+      </if>
+      <if test="applyitem != null">
+        applyItem = #{applyitem,jdbcType=VARCHAR},
+      </if>
+      <if test="applyremark != null">
+        applyRemark = #{applyremark,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        applyDate = #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkunit != null">
+        checkUnit = #{checkunit,jdbcType=VARCHAR},
+      </if>
+      <if test="checkman != null">
+        checkMan = #{checkman,jdbcType=VARCHAR},
+      </if>
+      <if test="checkremark != null">
+        checkRemark = #{checkremark,jdbcType=VARCHAR},
+      </if>
+      <if test="checkdate != null">
+        checkDate = #{checkdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="suggestion != null">
+        suggestion = #{suggestion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where blacklistID = #{blacklistid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Blacklist">
+    update blacklist
+    set supplierName = #{suppliername,jdbcType=VARCHAR},
+      applyUnit = #{applyunit,jdbcType=VARCHAR},
+      applyMan = #{applyman,jdbcType=VARCHAR},
+      applyItem = #{applyitem,jdbcType=VARCHAR},
+      applyRemark = #{applyremark,jdbcType=VARCHAR},
+      applyDate = #{applydate,jdbcType=TIMESTAMP},
+      checkUnit = #{checkunit,jdbcType=VARCHAR},
+      checkMan = #{checkman,jdbcType=VARCHAR},
+      checkRemark = #{checkremark,jdbcType=VARCHAR},
+      checkDate = #{checkdate,jdbcType=TIMESTAMP},
+      Status = #{status,jdbcType=VARCHAR},
+      suggestion = #{suggestion,jdbcType=VARCHAR}
+    where blacklistID = #{blacklistid,jdbcType=INTEGER}
+  </update>
+</mapper>

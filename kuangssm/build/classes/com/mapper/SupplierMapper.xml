@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SupplierMapper">
+  <resultMap id="BaseResultMap" type="com.entity.Supplier">
+    <id column="supplierID" jdbcType="INTEGER" property="supplierid" />
+    <result column="supplierName" jdbcType="VARCHAR" property="suppliername" />
+    <result column="organizationCode" jdbcType="VARCHAR" property="organizationcode" />
+    <result column="simpleName" jdbcType="VARCHAR" property="simplename" />
+    <result column="legalRepresentative" jdbcType="VARCHAR" property="legalrepresentative" />
+    <result column="IDCard" jdbcType="BIGINT" property="idcard" />
+    <result column="Fund" jdbcType="INTEGER" property="fund" />
+    <result column="taxCode" jdbcType="VARCHAR" property="taxcode" />
+    <result column="licenceNumber" jdbcType="VARCHAR" property="licencenumber" />
+    <result column="bank" jdbcType="VARCHAR" property="bank" />
+    <result column="bankAccount" jdbcType="VARCHAR" property="bankaccount" />
+    <result column="registerAddress" jdbcType="VARCHAR" property="registeraddress" />
+    <result column="linkMan" jdbcType="VARCHAR" property="linkman" />
+    <result column="linkTel" jdbcType="VARCHAR" property="linktel" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="postalCode" jdbcType="INTEGER" property="postalcode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="storagePlace" jdbcType="VARCHAR" property="storageplace" />
+    <result column="transportationsecurity" jdbcType="VARCHAR" property="transportationsecurity" />
+    <result column="passDate" jdbcType="TIMESTAMP" property="passdate" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplierID, supplierName, organizationCode, simpleName, legalRepresentative, IDCard, 
+    Fund, taxCode, licenceNumber, bank, bankAccount, registerAddress, linkMan, linkTel, 
+    fax, postalCode, address, email, storagePlace, transportationsecurity, passDate, 
+    type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where supplierID = #{supplierid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from supplier
+    where supplierID = #{supplierid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Supplier">
+    insert into supplier (supplierID, supplierName, organizationCode, 
+      simpleName, legalRepresentative, IDCard, 
+      Fund, taxCode, licenceNumber, 
+      bank, bankAccount, registerAddress, 
+      linkMan, linkTel, fax, 
+      postalCode, address, email, 
+      storagePlace, transportationsecurity, passDate, 
+      type)
+    values (#{supplierid,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, #{organizationcode,jdbcType=VARCHAR}, 
+      #{simplename,jdbcType=VARCHAR}, #{legalrepresentative,jdbcType=VARCHAR}, #{idcard,jdbcType=BIGINT}, 
+      #{fund,jdbcType=INTEGER}, #{taxcode,jdbcType=VARCHAR}, #{licencenumber,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR}, #{registeraddress,jdbcType=VARCHAR}, 
+      #{linkman,jdbcType=VARCHAR}, #{linktel,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{postalcode,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{storageplace,jdbcType=VARCHAR}, #{transportationsecurity,jdbcType=VARCHAR}, #{passdate,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Supplier">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        supplierID,
+      </if>
+      <if test="suppliername != null">
+        supplierName,
+      </if>
+      <if test="organizationcode != null">
+        organizationCode,
+      </if>
+      <if test="simplename != null">
+        simpleName,
+      </if>
+      <if test="legalrepresentative != null">
+        legalRepresentative,
+      </if>
+      <if test="idcard != null">
+        IDCard,
+      </if>
+      <if test="fund != null">
+        Fund,
+      </if>
+      <if test="taxcode != null">
+        taxCode,
+      </if>
+      <if test="licencenumber != null">
+        licenceNumber,
+      </if>
+      <if test="bank != null">
+        bank,
+      </if>
+      <if test="bankaccount != null">
+        bankAccount,
+      </if>
+      <if test="registeraddress != null">
+        registerAddress,
+      </if>
+      <if test="linkman != null">
+        linkMan,
+      </if>
+      <if test="linktel != null">
+        linkTel,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="postalcode != null">
+        postalCode,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="storageplace != null">
+        storagePlace,
+      </if>
+      <if test="transportationsecurity != null">
+        transportationsecurity,
+      </if>
+      <if test="passdate != null">
+        passDate,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationcode != null">
+        #{organizationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="simplename != null">
+        #{simplename,jdbcType=VARCHAR},
+      </if>
+      <if test="legalrepresentative != null">
+        #{legalrepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        #{idcard,jdbcType=BIGINT},
+      </if>
+      <if test="fund != null">
+        #{fund,jdbcType=INTEGER},
+      </if>
+      <if test="taxcode != null">
+        #{taxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="licencenumber != null">
+        #{licencenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null">
+        #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="registeraddress != null">
+        #{registeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linktel != null">
+        #{linktel,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        #{postalcode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="storageplace != null">
+        #{storageplace,jdbcType=VARCHAR},
+      </if>
+      <if test="transportationsecurity != null">
+        #{transportationsecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="passdate != null">
+        #{passdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Supplier">
+    update supplier
+    <set>
+      <if test="suppliername != null">
+        supplierName = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationcode != null">
+        organizationCode = #{organizationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="simplename != null">
+        simpleName = #{simplename,jdbcType=VARCHAR},
+      </if>
+      <if test="legalrepresentative != null">
+        legalRepresentative = #{legalrepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        IDCard = #{idcard,jdbcType=BIGINT},
+      </if>
+      <if test="fund != null">
+        Fund = #{fund,jdbcType=INTEGER},
+      </if>
+      <if test="taxcode != null">
+        taxCode = #{taxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="licencenumber != null">
+        licenceNumber = #{licencenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null">
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null">
+        bankAccount = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="registeraddress != null">
+        registerAddress = #{registeraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null">
+        linkMan = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linktel != null">
+        linkTel = #{linktel,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="postalcode != null">
+        postalCode = #{postalcode,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="storageplace != null">
+        storagePlace = #{storageplace,jdbcType=VARCHAR},
+      </if>
+      <if test="transportationsecurity != null">
+        transportationsecurity = #{transportationsecurity,jdbcType=VARCHAR},
+      </if>
+      <if test="passdate != null">
+        passDate = #{passdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supplierID = #{supplierid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Supplier">
+    update supplier
+    set supplierName = #{suppliername,jdbcType=VARCHAR},
+      organizationCode = #{organizationcode,jdbcType=VARCHAR},
+      simpleName = #{simplename,jdbcType=VARCHAR},
+      legalRepresentative = #{legalrepresentative,jdbcType=VARCHAR},
+      IDCard = #{idcard,jdbcType=BIGINT},
+      Fund = #{fund,jdbcType=INTEGER},
+      taxCode = #{taxcode,jdbcType=VARCHAR},
+      licenceNumber = #{licencenumber,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bankAccount = #{bankaccount,jdbcType=VARCHAR},
+      registerAddress = #{registeraddress,jdbcType=VARCHAR},
+      linkMan = #{linkman,jdbcType=VARCHAR},
+      linkTel = #{linktel,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      postalCode = #{postalcode,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      storagePlace = #{storageplace,jdbcType=VARCHAR},
+      transportationsecurity = #{transportationsecurity,jdbcType=VARCHAR},
+      passDate = #{passdate,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR}
+    where supplierID = #{supplierid,jdbcType=INTEGER}
+  </update>
+</mapper>

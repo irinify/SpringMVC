@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SupratingMapper">
+  <resultMap id="BaseResultMap" type="com.entity.Suprating">
+    <id column="supratingID" jdbcType="INTEGER" property="supratingid" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="supplierName" jdbcType="VARCHAR" property="suppliername" />
+    <result column="annualRating" jdbcType="REAL" property="annualrating" />
+    <result column="rank" jdbcType="VARCHAR" property="rank" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supratingID, year, supplierName, annualRating, rank
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from suprating
+    where supratingID = #{supratingid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from suprating
+    where supratingID = #{supratingid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Suprating">
+    insert into suprating (supratingID, year, supplierName, 
+      annualRating, rank)
+    values (#{supratingid,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{suppliername,jdbcType=VARCHAR}, 
+      #{annualrating,jdbcType=REAL}, #{rank,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.entity.Suprating">
+    insert into suprating
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supratingid != null">
+        supratingID,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="suppliername != null">
+        supplierName,
+      </if>
+      <if test="annualrating != null">
+        annualRating,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supratingid != null">
+        #{supratingid,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null">
+        #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="annualrating != null">
+        #{annualrating,jdbcType=REAL},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.entity.Suprating">
+    update suprating
+    <set>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="suppliername != null">
+        supplierName = #{suppliername,jdbcType=VARCHAR},
+      </if>
+      <if test="annualrating != null">
+        annualRating = #{annualrating,jdbcType=REAL},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where supratingID = #{supratingid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Suprating">
+    update suprating
+    set year = #{year,jdbcType=INTEGER},
+      supplierName = #{suppliername,jdbcType=VARCHAR},
+      annualRating = #{annualrating,jdbcType=REAL},
+      rank = #{rank,jdbcType=VARCHAR}
+    where supratingID = #{supratingid,jdbcType=INTEGER}
+  </update>
+</mapper>
